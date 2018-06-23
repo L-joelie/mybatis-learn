@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gacia.joelie.mapper.RoleMapper">
+    <select id="getRole" parameterType="long" resultType="role">
+        SELECT id,role_name AS roleName,note from t_role WHERE id = #{id}
+    </select>
+    
+    <insert id="insertRole" parameterType="role">
+        INSERT INTO t_role(role_name,note) VALUES (#{roleName}, #{note})
+    </insert>
+    
+    <delete id="deleteRole" parameterType="long">
+        DELETE FROM t_role WHERE id = #{id}
+    </delete>
+
+    <select id="getRoleMap" parameterType="long" resultType="java.util.HashMap">
+        SELECT id, role_name,note from t_role where id = #{id}
+    </select>
+</mapper>
